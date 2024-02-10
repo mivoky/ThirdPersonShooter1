@@ -23,6 +23,18 @@ public class PlayerController : MonoBehaviour
             {
                 _moveVector += transform.forward;
             }
+        if (Input.GetKey(KeyCode.S))
+        {
+            _moveVector -= transform.forward;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            _moveVector += transform.right;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            _moveVector -= transform.right;
+        }
         if (Input.GetKeyDown(KeyCode.Space) && _characterControler.isGrounded)
             {
                 _fallVelocity = -jumpForce;
@@ -36,5 +48,9 @@ public class PlayerController : MonoBehaviour
 
         _fallVelocity += gravity + Time.fixedDeltaTime;
         _characterControler.Move(Vector3.down * _fallVelocity * Time.fixedDeltaTime);
+        if(_characterControler.isGrounded) 
+        {
+            _fallVelocity = 0;
+        }
     }
 }
