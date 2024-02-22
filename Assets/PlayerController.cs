@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Animator animator;
     public float gravity = 9.6f;
     public float jumpForce;
 
@@ -24,22 +25,23 @@ public class PlayerController : MonoBehaviour
                 _moveVector += transform.forward;
             }
         if (Input.GetKey(KeyCode.S))
-        {
-            _moveVector -= transform.forward;
-        }
+            {
+                _moveVector -= transform.forward;
+            }
         if (Input.GetKey(KeyCode.D))
-        {
-            _moveVector += transform.right;
-        }
+            {
+                _moveVector += transform.right;
+            }
         if (Input.GetKey(KeyCode.A))
-        {
-            _moveVector -= transform.right;
-        }
+            {
+                _moveVector -= transform.right;
+            }
         if (Input.GetKeyDown(KeyCode.Space) && _characterControler.isGrounded)
             {
                 _fallVelocity = -jumpForce;
             }
-        
+        AnimatorController();
+
     }
     // Update is physic
     void FixedUpdate()
@@ -51,6 +53,25 @@ public class PlayerController : MonoBehaviour
         if(_characterControler.isGrounded) 
         {
             _fallVelocity = 0;
+        }
+    }
+    void AnimatorController()
+    {
+        if (_moveVector != Vector3.zero)
+        {
+            animator.SetBool("isRun", true);
+        }
+        if (_moveVector == Vector3.zero)
+        {
+            animator.SetBool("isRun", false);
+        }
+        if (_characterControler.isGrounded)
+        {
+            animator.SetBool("isGrounded", true);
+        }
+        else
+        {
+            animator.SetBool("isGrounded", false);
         }
     }
 }
