@@ -27,31 +27,31 @@ public class EnemyAI : MonoBehaviour
         NoticePlayerUpdate();
         PatrolUpdate();
     }
-    private void PickNewPatrolPoint()
+    public void PickNewPatrolPoint()
     {
         _navMeshAgent.destination = patrolPoint[Random.Range(0, patrolPoint.Count)].position;
     }
 
-    private void InitComponentLinks()
+    public void InitComponentLinks()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    private void PatrolUpdate()
+    public void PatrolUpdate()
     {
         if (_navMeshAgent.remainingDistance == 0)
-            if (IsPlayerNoticed == true)
+            if (IsPlayerNoticed == false)
                 {
                     PickNewPatrolPoint();
                 }
     }
 
-    private void NoticePlayerUpdate()
+    public void NoticePlayerUpdate()
     {
         var direction = player.transform.position - transform.position;
+        IsPlayerNoticed = false;
         if (Vector3.Angle(transform.position, direction) < viewAngle)
         {
-            IsPlayerNoticed = false;
             RaycastHit hit;
             if (Physics.Raycast(transform.position + Vector3.up, direction, out hit))
             {
@@ -59,10 +59,10 @@ public class EnemyAI : MonoBehaviour
                 {
                     IsPlayerNoticed = true;
                 }
-            }
+            }          
         }
     }
-    private void ChaseUpdate()
+    public void ChaseUpdate()
     {
         if (IsPlayerNoticed == true)
         {
