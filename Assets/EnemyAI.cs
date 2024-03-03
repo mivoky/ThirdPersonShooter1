@@ -37,7 +37,7 @@ public class EnemyAI : MonoBehaviour
     public void InitComponentLinks()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        _playerHealth = GetComponent<PlayerHealth>();
+        _playerHealth = player.GetComponent<PlayerHealth>();
     }
 
     public void PatrolUpdate()
