@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float health = 100;
+    public float Health = 100;
     public RectTransform valueRectTransform;
     public GameObject gameplayUI;
     public GameObject gameOverScreen;
@@ -15,23 +15,23 @@ public class PlayerHealth : MonoBehaviour
     {
         gameOverScreen.SetActive(false);
         gameplayUI.SetActive(true);
-        _maxHealth = health;
+        _maxHealth = Health;
         DrawGameBar();
     }
 
     public void DealDamage(float damage)
     {
-        health -= damage;
-        if (health <= 0)
+        Health -= damage;
+        if (Health <= 0)
         {
-
+            PlayerIsDead();
         }
         DrawGameBar();
     }
 
     private void DrawGameBar()
     {
-        valueRectTransform.anchorMax = new Vector2(health / _maxHealth, 0);
+        valueRectTransform.anchorMax = new Vector2(Health / _maxHealth, 0);
     }
 
     private void PlayerIsDead()
