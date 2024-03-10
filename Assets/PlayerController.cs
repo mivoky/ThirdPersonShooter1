@@ -5,17 +5,23 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Animator animator;
+
     public float gravity = 9.6f;
     public float jumpForce;
-
+    public float RunConf = 2;
     public float speed = 2;
+
     private Vector3 _moveVector;
     private CharacterController _characterControler;
+
+    private float _runConf;
     private float _fallVelocity = 0;
     // Start is called before the first frame update
     void Start()
     {
         _characterControler = GetComponent<CharacterController>();
+        _runConf = RunConf;
+        RunConf = 1;
     }
     private void Update()
     {
@@ -40,13 +46,23 @@ public class PlayerController : MonoBehaviour
             {
                 _fallVelocity = -jumpForce;
             }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            RunConf = _runConf;
+        }
+        else
+        {
+            RunConf = 1;
+        }
+
         AnimatorController();
 
     }
     // Update is physic
     void FixedUpdate()
     {
-        _characterControler.Move(_moveVector * speed * Time.fixedDeltaTime);
+        _characterControler.Move(_moveVector * speed * RunConf * Time.fixedDeltaTime);
 
         _fallVelocity += gravity + Time.fixedDeltaTime;
         _characterControler.Move(Vector3.down * _fallVelocity * Time.fixedDeltaTime);
