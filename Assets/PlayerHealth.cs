@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     public RectTransform valueRectTransform;
     public GameObject gameplayUI;
     public GameObject gameOverScreen;
+    public GameObject HealEffect;
 
     private float _maxHealth;
 
@@ -27,9 +28,18 @@ public class PlayerHealth : MonoBehaviour
         Health -= damage;
         if (Health <= 0)
         {
-            Health = 0;
             PlayerIsDead();
         }
+        DrawGameBar();
+    }
+    public void AddHealth(float amount)
+    {
+        Health += amount;
+        if (Health > _maxHealth)
+        {
+            Health = _maxHealth;
+        }
+        HealEffect.GetComponent<ParticleSystem>().Play();
         DrawGameBar();
     }
 
