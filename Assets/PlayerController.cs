@@ -89,5 +89,9 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isGrounded", false);
         }
+        if (Input.GetKeyDown(KeyCode.Space) && _characterControler.isGrounded)
+        {
+            animator.SetTrigger("Jump");
+        }
     }
 }
