@@ -26,7 +26,6 @@ public class PlayerProgress : MonoBehaviour
         {
             SetLevel(_levelValue += 1);
             _experienceCurrentValue = 0;
-            
         }
         DrawUI();
     }
@@ -34,7 +33,20 @@ public class PlayerProgress : MonoBehaviour
     {
         _levelValue = value;
 
-        _experienceTargetValue = levels[_levelValue - 1].expirienceForTheNextLevel;
+        var currentLevel = levels[_levelValue - 1];
+        _experienceTargetValue = currentLevel.expirienceForTheNextLevel;
+        GetComponent<Shooting>().Damage = currentLevel.BulletDamage;
+        var grenadeCaster = GetComponent<GrenadeCaster>();
+        grenadeCaster.Damage = currentLevel.grenadeDamage;
+
+        if (currentLevel.grenadeDamage < 0)
+        {
+            grenadeCaster.enabled = false;
+        }
+        else
+        {
+            grenadeCaster.enabled = true;
+        }
     }
     
     private void DrawUI()

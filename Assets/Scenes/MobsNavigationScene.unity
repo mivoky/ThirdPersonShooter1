@@ -8581,6 +8581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6f7b9d4672a80446a03cadf332aa934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 10
   bulletPrefab: {fileID: 9097980206527419214, guid: d1cb98d7365e47640828d02a68104689,
     type: 3}
   bulletSourceTransform: {fileID: 1813053350}
@@ -8630,34 +8631,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - FireballDamage: 10
+  - BulletDamage: 10
     grenadeDamage: -1
     expirienceForTheNextLevel: 100
-  - FireballDamage: 12
+  - BulletDamage: 12
     grenadeDamage: -1
     expirienceForTheNextLevel: 150
-  - FireballDamage: 15
+  - BulletDamage: 15
     grenadeDamage: 30
     expirienceForTheNextLevel: 250
-  - FireballDamage: 20
+  - BulletDamage: 20
     grenadeDamage: 40
     expirienceForTheNextLevel: 400
-  - FireballDamage: 28
+  - BulletDamage: 28
     grenadeDamage: 60
     expirienceForTheNextLevel: 700
-  - FireballDamage: 40
+  - BulletDamage: 40
     grenadeDamage: 80
     expirienceForTheNextLevel: 1200
-  - FireballDamage: 56
+  - BulletDamage: 56
     grenadeDamage: 115
     expirienceForTheNextLevel: 2000
-  - FireballDamage: 74
+  - BulletDamage: 74
     grenadeDamage: 150
     expirienceForTheNextLevel: 3000
-  - FireballDamage: 95
+  - BulletDamage: 95
     grenadeDamage: 190
     expirienceForTheNextLevel: 4500
-  - FireballDamage: 130
+  - BulletDamage: 130
     grenadeDamage: 260
     expirienceForTheNextLevel: 7000
   experienceValueRectTransform: {fileID: 1207838170}
