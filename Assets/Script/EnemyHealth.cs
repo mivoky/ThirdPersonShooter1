@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public PlayerProgress playerProgress;
-
+    public CountEnemy CountEnemy;
     public float health = 100;
 
     public void dealDamage(float damage)
@@ -15,6 +15,7 @@ public class EnemyHealth : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            CountEnemy._countOfKillEnemy += 1;
         }
     }
 }

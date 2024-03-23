@@ -43,7 +43,7 @@ public class EnemyAI : MonoBehaviour
     public void PatrolUpdate()
     {
         if (!IsPlayerNoticed)
-            if (_navMeshAgent.remainingDistance <= _navMeshAgent.remainingDistance)
+            if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
             {
                 PickNewPatrolPoint();
             }
