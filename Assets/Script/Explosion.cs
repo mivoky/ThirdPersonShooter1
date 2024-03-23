@@ -5,8 +5,8 @@ using UnityEngine;
 public class Explosion : MonoBehaviour
 {
     public float Damage = 50f;
-    public float Speed = 1f;
-    public float MaxSize = 2;
+    public float Speed = 4f;
+    public float MaxSize = 8;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +33,11 @@ public class Explosion : MonoBehaviour
         if (EnemyHeath != null)
         {
             EnemyHeath.dealDamage(Damage);
+        }
+        var DestroyBuildings = other.GetComponent<DestroyBuilding>();
+        if (DestroyBuildings != null)
+        {
+            DestroyBuildings.dealDamage(Damage);
         }
     }
 }

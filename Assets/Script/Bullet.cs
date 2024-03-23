@@ -20,12 +20,15 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         var EnemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
-
+        var DestroyBuilding = collision.gameObject.GetComponent<DestroyBuilding>();
         if (EnemyHealth != null)
         {
             EnemyHealth.dealDamage(damage);
         }
-
+        if (DestroyBuilding != null) 
+        { 
+            DestroyBuilding.dealDamage(damage);
+        }
         DestroyBullet();
 
     }
